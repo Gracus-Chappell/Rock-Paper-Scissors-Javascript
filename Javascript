@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+  <style>
+  </style>
+</head>
+<body>
+  <p></p>
+
+  <script>
+let roundNumber = 1
+let playerScore = 0
+let computerScore = 0
+
+console.log("Welcome to the Rock Paper Scissors game!  Your opponent - The Computer!");
+game();
+
+function game(){
+  console.log("Round " + roundNumber)
+  console.log("Player score = " + playerScore)
+  console.log("Computer score = " + computerScore)
+
+// Prompts the User for an answer.
+let playerSelection = prompt("Choose Rock, Paper or Scissors.");
+    playerSelection = playerSelection.toLowerCase();
+    console.log("You have chosen " + playerSelection + ".");
+
+  //   Computer randomly chooses between Rock, Paper or Scissors.
+  function computerPlay(){
+    switch (Math.floor(Math.random() * 3)){
+        case 0:
+            return "paper"
+        case 1:
+            return "rock"
+        case 2:
+            return "scissors"
+    }
+}
+
+const computerSelection = computerPlay();
+
+// Compares the inputs of both User and Computer to delcare an output.
+function playRound(playerSelection, computerSelection){
+  console.log("The computer chose " + computerSelection + ".")
+  if (playerSelection == computerSelection){
+    console.log("Tie!")
+    }else if (
+    (playerSelection == "rock" && computerSelection == "scissors") ||
+    (playerSelection == "paper" && computerSelection == "rock") ||
+    (playerSelection == "scissors" && computerSelection == "paper")
+    ){
+      console.log("You win!  " + playerSelection + " beats " + computerSelection + ".")
+      ++playerScore
+    } else {
+      console.log("You lose!  " + computerSelection + " beats " + playerSelection + ".")
+      ++computerScore
+    }
+}
+
+playRound(playerSelection, computerSelection);
+
+// Allows 5 games to be played then checks player and computer score to determin winner.
+if (roundNumber < 5){
+  ++roundNumber;
+  game();
+}else if (playerScore > computerScore){
+  console.log("You have won the game! Great job!")
+  } else if (playerScore == computerScore){
+    console.log("You have both got the same score! Draw!")
+  }else{
+    console.log("You have lost the game! Better luck next time!")
+  }
+}
+</script>
+</body>
+</html>
