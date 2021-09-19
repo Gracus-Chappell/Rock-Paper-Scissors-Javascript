@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+  <style>
+  </style>
+</head>
+<body>
+    <h1 id="round"></h1>
+    <button onclick="playerChoice('rock')">Rock</button>
+    <button onclick="playerChoice('paper')">Paper</button>
+    <button onclick="playerChoice('scissors')">Scissors</button>
+    <h2 id="playerScore">Player Score = </h2>
+    <h2 id="computerScore">Computer Score = </h2>
+  <script>
+let roundNumber = 1
+let playerScore = 0
+let computerScore = 0
+
+document.getElementById("round").innerHTML = "Round " + roundNumber;
+document.getElementById("playerScore").innerHTML = "Player Score = " + playerScore;
+document.getElementById("computerScore").innerHTML = "Computer Score = " + computerScore;
+
+function playerChoice(choice){
+    console.log(choice)
+    computerChoice = computerPlay()
+    console.log(computerChoice)
+    if (computerChoice == "rock" && choice == "rock"){
+        console.log("Tie!");
+    } else if (computerChoice == "paper" && choice == "rock"){
+        console.log("You lose!");
+        computerScore++
+    } else if (computerChoice == "scissors" && choice == "rock"){
+        console.log("You win!");
+        playerScore++
+    } else if (computerChoice == "rock" && choice == "paper"){
+        console.log("You win!");
+        playerScore++
+    } else if (computerChoice == "paper" && choice == "paper"){
+        console.log("Tie!");
+    } else if (computerChoice == "scissors" && choice == "paper"){
+        console.log("You lose!");
+        computerScore++
+    } else if (computerChoice == "rock" && choice == "scissors"){
+        console.log("You lose!");
+        computerScore++
+    } else if (computerChoice == "paper" && choice == "scissors"){
+        console.log("You win!");
+        playerScore++
+    } else if (computerChoice == "scissors" && choice == "scissors"){
+        console.log("Tie!");
+    }
+    roundNumber++
+    document.getElementById("round").innerHTML = "Round " + roundNumber;
+    document.getElementById("playerScore").innerHTML = "Player Score = " + playerScore;
+    document.getElementById("computerScore").innerHTML = "Computer Score = " + computerScore;
+    }
+
+    
+
+  //   Computer randomly chooses between Rock, Paper or Scissors.
+  function computerPlay(){
+    switch (Math.floor(Math.random() * 3)){
+        case 0:
+            return "paper"
+        case 1:
+            return "rock"
+        case 2:
+            return "scissors"
+    }
+}
+</script>
+</body>
+</html>
