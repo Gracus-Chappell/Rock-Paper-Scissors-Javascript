@@ -26,33 +26,37 @@ function playerChoice(choice){
     console.log(choice)
     computerChoice = computerPlay()
     console.log(computerChoice)
-    if (computerChoice == "rock" && choice == "rock"){
-        console.log("Tie!");
-    } else if (computerChoice == "paper" && choice == "rock"){
-        console.log("You lose!");
-        computerScore++
-    } else if (computerChoice == "scissors" && choice == "rock"){
-        console.log("You win!");
-        playerScore++
-    } else if (computerChoice == "rock" && choice == "paper"){
-        console.log("You win!");
-        playerScore++
-    } else if (computerChoice == "paper" && choice == "paper"){
-        console.log("Tie!");
-    } else if (computerChoice == "scissors" && choice == "paper"){
-        console.log("You lose!");
-        computerScore++
-    } else if (computerChoice == "rock" && choice == "scissors"){
-        console.log("You lose!");
-        computerScore++
-    } else if (computerChoice == "paper" && choice == "scissors"){
-        console.log("You win!");
-        playerScore++
-    } else if (computerChoice == "scissors" && choice == "scissors"){
-        console.log("Tie!");
+    if (roundNumber < 5){
+        if (computerChoice == "rock" && choice == "rock"){
+            console.log("Tie!");
+        } else if (computerChoice == "paper" && choice == "rock"){
+            console.log("You lose!");
+            computerScore++
+        } else if (computerChoice == "scissors" && choice == "rock"){
+            console.log("You win!");
+            playerScore++
+        } else if (computerChoice == "rock" && choice == "paper"){
+            console.log("You win!");
+            playerScore++
+        } else if (computerChoice == "paper" && choice == "paper"){
+            console.log("Tie!");
+        } else if (computerChoice == "scissors" && choice == "paper"){
+            console.log("You lose!");
+            computerScore++
+        } else if (computerChoice == "rock" && choice == "scissors"){
+            console.log("You lose!");
+            computerScore++
+        } else if (computerChoice == "paper" && choice == "scissors"){
+            console.log("You win!");
+            playerScore++
+        } else if (computerChoice == "scissors" && choice == "scissors"){
+            console.log("Tie!");
+        }
+        roundNumber++
+        document.getElementById("round").innerHTML = "Round " + roundNumber;
+    } else if (roundNumber = 5){
+        document.getElementById("round").innerHTML = "Game Complete!";
     }
-    roundNumber++
-    document.getElementById("round").innerHTML = "Round " + roundNumber;
     document.getElementById("playerScore").innerHTML = "Player Score = " + playerScore;
     document.getElementById("computerScore").innerHTML = "Computer Score = " + computerScore;
     }
