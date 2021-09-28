@@ -14,6 +14,7 @@
     <h2 id="playerScore">Player Score = </h2>
     <h2 id="computerScore">Computer Score = </h2>
   <script>
+
 let roundNumber = 1
 let playerScore = 0
 let computerScore = 0
@@ -23,9 +24,7 @@ document.getElementById("playerScore").innerHTML = "Player Score = " + playerSco
 document.getElementById("computerScore").innerHTML = "Computer Score = " + computerScore;
 
 function playerChoice(choice){
-    console.log(choice)
     computerChoice = computerPlay()
-    console.log(computerChoice)
     if (roundNumber < 5){
         if (computerChoice == "rock" && choice == "rock"){
             console.log("Tie!");
@@ -55,7 +54,14 @@ function playerChoice(choice){
         roundNumber++
         document.getElementById("round").innerHTML = "Round " + roundNumber;
     } else if (roundNumber = 5){
-        document.getElementById("round").innerHTML = "Game Complete!";
+        if (playerScore > computerScore){
+            document.getElementById("round").innerHTML = "Game Complete! You win!";
+        } else if (playerScore < computerScore){
+            document.getElementById("round").innerHTML = "Game Complete! You lose!";
+        } else {
+            document.getElementById("round").innerHTML = "Game Complete! Draw!";
+        }
+        
     }
     document.getElementById("playerScore").innerHTML = "Player Score = " + playerScore;
     document.getElementById("computerScore").innerHTML = "Computer Score = " + computerScore;
