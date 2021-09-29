@@ -11,6 +11,8 @@
     <button onclick="playerChoice('rock')">Rock</button>
     <button onclick="playerChoice('paper')">Paper</button>
     <button onclick="playerChoice('scissors')">Scissors</button>
+    <button onclick="restartGame()">Restart</button>
+
     <h2 id="playerScore">Player Score = </h2>
     <h2 id="computerScore">Computer Score = </h2>
   <script>
@@ -69,8 +71,8 @@ function playerChoice(choice){
 
     
 
-  //   Computer randomly chooses between Rock, Paper or Scissors.
-  function computerPlay(){
+//   Computer randomly chooses between Rock, Paper or Scissors.
+function computerPlay(){
     switch (Math.floor(Math.random() * 3)){
         case 0:
             return "paper"
@@ -80,6 +82,17 @@ function playerChoice(choice){
             return "scissors"
     }
 }
+
+function restartGame(){
+    playerScore = 0
+    computerScore = 0
+    roundNumber = 1
+
+document.getElementById("round").innerHTML = "Round " + roundNumber;
+document.getElementById("playerScore").innerHTML = "Player Score = " + playerScore;
+document.getElementById("computerScore").innerHTML = "Computer Score = " + computerScore;
+}
+
 </script>
 </body>
 </html>
