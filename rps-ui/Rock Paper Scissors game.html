@@ -10,10 +10,13 @@
   </style>
 </head>
 <body>
+    <p id = choiceLog></p>
     <h1 id="round"></h1>
-    <button onclick="playerChoice('rock')">Rock</button>
-    <button onclick="playerChoice('paper')">Paper</button>
-    <button onclick="playerChoice('scissors')">Scissors</button>
+    <div id = playerChoiceBtns>
+        <button  onclick="playerChoice('rock')">Rock</button>
+        <button  onclick="playerChoice('paper')">Paper</button>
+        <button  onclick="playerChoice('scissors')">Scissors</button>
+    </div>
     <button id = "restartBtn" onclick="restartGame()">Restart</button>
 
     <h2 id="playerScore">Player Score = </h2>
@@ -32,34 +35,35 @@ function playerChoice(choice){
     computerChoice = computerPlay()
     if (roundNumber < 5){
         if (computerChoice == "rock" && choice == "rock"){
-            console.log("Tie!");
+            document.getElementById("choiceLog").innerHTML = "Draw!  You chose Rock and Computer chose Rock."
         } else if (computerChoice == "paper" && choice == "rock"){
-            console.log("You lose!");
+            document.getElementById("choiceLog").innerHTML = "You lost this round!  You chose Rock and Computer chose Paper."
             computerScore++
         } else if (computerChoice == "scissors" && choice == "rock"){
-            console.log("You win!");
+            document.getElementById("choiceLog").innerHTML = "You won this round!  You chose Rock and Computer chose Scissors."
             playerScore++
         } else if (computerChoice == "rock" && choice == "paper"){
-            console.log("You win!");
+            document.getElementById("choiceLog").innerHTML = "You won this round!  You chose Paper and Computer chose Rock."
             playerScore++
         } else if (computerChoice == "paper" && choice == "paper"){
-            console.log("Tie!");
+            document.getElementById("choiceLog").innerHTML = "Draw!  You chose Paper and Computer chose Paper."
         } else if (computerChoice == "scissors" && choice == "paper"){
-            console.log("You lose!");
+            document.getElementById("choiceLog").innerHTML = "You lost this round!  You chose Paper and Computer chose Scissors."
             computerScore++
         } else if (computerChoice == "rock" && choice == "scissors"){
-            console.log("You lose!");
+            document.getElementById("choiceLog").innerHTML = "You lost this round!  You chose Scissors and Computer chose Rock."
             computerScore++
         } else if (computerChoice == "paper" && choice == "scissors"){
-            console.log("You win!");
+            document.getElementById("choiceLog").innerHTML = "You won this round!  You chose scissors and Computer chose Paper."
             playerScore++
         } else if (computerChoice == "scissors" && choice == "scissors"){
-            console.log("Tie!");
+            document.getElementById("choiceLog").innerHTML = "Draw!  You chose Scissors and Computer chose Scissors."
         }
         roundNumber++
         document.getElementById("round").innerHTML = "Round " + roundNumber;
     } else if (roundNumber = 5){
         document.getElementById("restartBtn").style.display = "inline";
+        document.getElementById("playerChoiceBtns").style.display = "none";
         if (playerScore > computerScore){
             document.getElementById("round").innerHTML = "Game Complete! You win!";
         } else if (playerScore < computerScore){
@@ -96,6 +100,8 @@ document.getElementById("round").innerHTML = "Round " + roundNumber;
 document.getElementById("playerScore").innerHTML = "Player Score = " + playerScore;
 document.getElementById("computerScore").innerHTML = "Computer Score = " + computerScore;
 document.getElementById("restartBtn").style.display = "none";
+document.getElementById("playerChoiceBtns").style.display = "inline";
+document.getElementById("choiceLog").innerHTML = "";
 }
 
 </script>
