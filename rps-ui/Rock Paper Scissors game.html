@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <title>Rock Paper Scissors</title>
   <style>
+      #restartBtn{
+          display: none;
+      }
   </style>
 </head>
 <body>
@@ -11,7 +14,7 @@
     <button onclick="playerChoice('rock')">Rock</button>
     <button onclick="playerChoice('paper')">Paper</button>
     <button onclick="playerChoice('scissors')">Scissors</button>
-    <button onclick="restartGame()">Restart</button>
+    <button id = "restartBtn" onclick="restartGame()">Restart</button>
 
     <h2 id="playerScore">Player Score = </h2>
     <h2 id="computerScore">Computer Score = </h2>
@@ -56,6 +59,7 @@ function playerChoice(choice){
         roundNumber++
         document.getElementById("round").innerHTML = "Round " + roundNumber;
     } else if (roundNumber = 5){
+        document.getElementById("restartBtn").style.display = "inline";
         if (playerScore > computerScore){
             document.getElementById("round").innerHTML = "Game Complete! You win!";
         } else if (playerScore < computerScore){
@@ -91,6 +95,7 @@ function restartGame(){
 document.getElementById("round").innerHTML = "Round " + roundNumber;
 document.getElementById("playerScore").innerHTML = "Player Score = " + playerScore;
 document.getElementById("computerScore").innerHTML = "Computer Score = " + computerScore;
+document.getElementById("restartBtn").style.display = "none";
 }
 
 </script>
